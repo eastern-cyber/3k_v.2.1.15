@@ -7,6 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}KokKokKok</title>
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}" >
+    <meta property="og:site_name" content="KokKokKok">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    {% block meta_tag %}
+    <meta property="og:title" content="ยินดีต้อนรับสู่ แอพก๊อกๆๆ">
+    <meta prpperty="og:desctription" content="Share and discover posts!">
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}/static/images/favicon.ico">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Welcome to KokKokKok">
+    <meta name="twitter:desctription" content="Share and discover post!">
+    <meta name="image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/favicon.ico' %}">
+    {% endblock %}
     {% htmx_script %}
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>

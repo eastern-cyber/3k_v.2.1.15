@@ -31,6 +31,7 @@ urlpatterns = [
     path('upload/', upload_view, name="upload"),
     path('post/', include("a_posts.urls")),
     path('profile/', include("a_users.urls")),
+    path('following/', include("a_network.urls")),
 ]
 
 if settings.DEBUG:

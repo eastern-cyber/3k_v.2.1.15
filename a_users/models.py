@@ -8,6 +8,14 @@ class CustomUser(AbstractUser):
     bio = models.TextField(blank=True, null=True)
     website = models.CharField(max_length=250, null=True, blank=True)
     birthday = models.DateField(blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        """Ensure username and email are always lowercase"""
+        if self.username:
+            self.username = self.username.lower()
+        if self.email:
+            self.email = self.email.lower()
+        super().save(*args, **kwargs)
     
     def __str__(self):
         return self.username

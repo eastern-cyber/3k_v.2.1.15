@@ -13,9 +13,17 @@ from .models import Post, Comment, Repost
 def home_view(request):
     posts = Post.objects.order_by('-created_at')
     reposts = Repost.objects.select_related('post', 'user')
+
+    reposted_posts = []
+    for repost in reposts:
+        post = repost.post
+        post.created_at = repost.created_at
+        post.repost_author = repost.user
+        post.is_repost = True
+        reposted_posts.append(post)
     
     feed = sorted(
-        chain(posts, reposts),
+        chain(posts, reposted_posts),
         key = attrgetter('created_at'),
         reverse = True
     )
@@ -257,3 +265,21 @@ def like_comment(request, pk):
         'comment': comment
     }
     return render(request, 'a_posts/partials/comments/_button_like_comment.html', context)
+
+
+@login_required
+def share_post(request, pk):
+    post = get_object_or_404(Post, uuid=pk)
+    
+    if request.GET.get("repost"):
+        if post.reposts.filter(id=request.user.id).exists():
+            post.reposts.remove(request.user)
+        else:
+            post.reposts.add(request.user)
+        return redirect('home')
+    
+    context = {
+        'post': post,
+    }
+    
+    return render(request, 'a_posts/partials/_post_share.html', context)

@@ -57,7 +57,6 @@ INSTALLED_APPS = [
     # My apps
     'a_posts',
     'a_users',
-    'a_network',
     
     # Third party
     'django_browser_reload',

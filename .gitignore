@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Django
+*.log
+*.pot
+*.pyc
+db.sqlite3
+db.sqlite3-journal
+/staticfiles
+/static
+/media
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# PythonAnywhere specific
+*.wsgi
+debug_db*.txt
+
+# Secrets
+SECRET_KEY
+*.key
+*.pem
+
+# Database backups
+*.sqlite3
+*.json
+*.sql
+
+# Local development
+local_settings.py
+test_*.py
