@@ -11,8 +11,8 @@
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
     {% block meta_tag %}
     <meta property="og:title" content="ยินดีต้อนรับสู่ แอพก๊อกๆๆ">
-    <meta prpperty="og:desctription" content="Share and discover posts!">
-    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}/static/images/favicon.ico">
+    <meta propperty="og:desctription" content="Share and discover posts!">
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/favicon.ico' %}">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Welcome to KokKokKok">
